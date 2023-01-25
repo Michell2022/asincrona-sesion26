@@ -12,6 +12,9 @@ import { BreakingComponent } from './breaking/breaking.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    HomeComponent
   ]
 })
 export class PagesModule { }

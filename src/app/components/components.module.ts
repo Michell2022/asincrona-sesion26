@@ -12,6 +12,10 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    HeaderComponent,
+    LoginComponent
   ]
 })
 export class ComponentsModule { }
