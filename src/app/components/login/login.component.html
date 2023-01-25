@@ -3,13 +3,22 @@
     <div class="bg-blue-100 rounded-t-xl">
         <h1 class="py-3 text-center font-bold text-[20px]">Login</h1>
     </div>
-    <form [formGroup]="formLogin" class="px-8">
+    <form class="px-8" [formGroup]="formLogin" (submit)="validar()">
         <div class="my-3">
             <div>
                 <label for="username">Username:</label>
             </div>
             <div>
-                <input class="border w-full py-2 px-2 rounded" type="text" name="username" id="username">
+                <input class="border w-full py-2 px-2 rounded" type="text" name="username" id="username" formControlName="username" 
+                required class="form-control" [class.is-invalid]="username.invalid && (username.dirty || username.touched)">
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="invalid-feedback">
+                    <div *ngIf="username.errors?.['required']">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="username.errors?.['minlength']">
+                        Este campo debe tener al menos 3 caracteres.
+                    </div>
+                </div>
             </div>
         </div>
         <div class="my-3">
@@ -17,11 +26,20 @@
                 <label for="password">Password:</label>
             </div>
             <div>
-                <input class="border w-full py-2 px-2 rounded" type="text" name="password" id="password">
+                <input class="border w-full py-2 px-2 rounded" type="text" name="password" id="password" formControlName="password" 
+                required class="form-control" [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                    <div *ngIf="password.errors?.['required']">
+                        Este campo es obligatorio.
+                    </div>
+                    <div *ngIf="password.errors?.['minlength']">
+                        Este campo debe tener al menos 3 caracteres.
+                    </div>
+                </div>
             </div>
         </div>
         <div class="my-3">
-            <button class="bg-blue-500 text-white py-1 px-4 rounded mr-4">Login</button>
+            <button class="bg-blue-500 text-white py-1 px-4 rounded mr-4" [disabled]="formLogin.invalid">Login</button>
             <button class="bg-orange-500 text-white py-1 px-4 rounded">Registro</button>
         </div>
     </form>
