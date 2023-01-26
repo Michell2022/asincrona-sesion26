@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatosService } from 'src/app/services/datos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -59,9 +60,24 @@ export class LoginComponent implements OnInit {
     //this.datitosService.compareData(user,email);
     this.datitosService.compareData(user,email).subscribe(isValid => {
       if (isValid) {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Bienvenido(a) sesión iniciada',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.router.navigate(['home']);
-        console.log("Datos correctos");
+        //console.log("Datos correctos");
       } else {
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'warning',
+          title: 'Usuario / Contraseña incorrecta',
+          showConfirmButton: false,
+          timer: 1500
+        })
         console.log("Incorrectos");
       }
     });

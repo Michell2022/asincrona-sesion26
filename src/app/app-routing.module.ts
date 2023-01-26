@@ -6,10 +6,10 @@ import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
 
+  
   { path:'home', component:HomeComponent, canActivate:[PermisosDingresoGuard]},
   { path:'login', component:LoginComponent },
-  { path:'', redirectTo:'login', pathMatch:'full' }
-
+  { path:'', redirectTo:'login', pathMatch:'full' },
 ];
 
 @NgModule({

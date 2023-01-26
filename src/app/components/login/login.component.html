@@ -1,16 +1,16 @@
 
 <div class="w-4/5 mx-auto border md:w-1/2 rounded-xl mt-12">
-    <div class="bg-blue-100 rounded-t-xl">
-        <h1 class="py-3 text-center font-bold text-[20px]">Login</h1>
+    <div class="bg-blue-600 rounded-t-xl">
+        <h1 class="py-3 text-center text-white font-bold text-[20px]">Login</h1>
     </div>
     <form class="px-8" [formGroup]="formLogin" (submit)="validarEntradas()">
-        <div class="my-3">
+        <div class="my-5">
             <div>
                 <label for="username">Username:</label>
             </div>
             <div>
                 <input class="border w-full py-2 px-2 rounded" type="text" name="username" id="username" formControlName="username" 
-                required class="form-control" [class.is-invalid]="username.invalid && (username.dirty || username.touched)">
+                placeholder="ej. Samantha" required class="form-control" [class.is-invalid]="username.invalid && (username.dirty || username.touched)">
                 <div *ngIf="username.invalid && (username.dirty || username.touched)" class="invalid-feedback">
                     <div *ngIf="username.errors?.['required']">
                         Este campo es obligatorio.
@@ -21,13 +21,13 @@
                 </div>
             </div>
         </div>
-        <div class="my-3">
+        <div class="my-5">
             <div>
                 <label for="email">Password:</label>
             </div>
             <div>
                 <input class="border w-full py-2 px-2 rounded" type="text" name="email" id="email" formControlName="email" 
-                required class="form-control" [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
+                placeholder="ej: Nathan@yesenia.net" required class="form-control" [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
                     <div *ngIf="email.errors?.['required']">
                         Este campo es obligatorio.
@@ -39,8 +39,7 @@
             </div>
         </div>
         <div class="my-3">
-            <button class="bg-blue-500 text-white py-1 px-4 rounded mr-4" [disabled]="formLogin.invalid" (click)="validate()">Login</button>
-            <button class="bg-orange-500 text-white py-1 px-4 rounded">Registro</button>
+            <button class="bg-blue-500 text-white py-2 px-12 rounded mr-4 duration-300 hover:bg-blue-700" [disabled]="formLogin.invalid" (click)="validate()">Iniciar sesión</button>
         </div>
     </form>
 </div>

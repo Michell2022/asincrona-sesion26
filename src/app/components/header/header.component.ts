@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { DatosService } from 'src/app/services/datos.service';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-}
+  constructor(private userservice:DatosService, private router:Router){
+  }
+
+  logout(){
+    this.userservice.logout(); 
+    }
+    
+  }
+
+
