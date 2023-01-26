@@ -1,1 +1,23 @@
-<p>home works!</p>
+
+  <table class="mt-12 table-auto border-collapse border border-slate-400 w-11/12 mx-auto text-center md:w-4/5">
+    <thead class="bg-black text-white text-lg">
+      <tr>
+        <th class="border border-slate-300 py-3">Nombre</th>
+        <th class="border border-slate-300 py-3">Username</th>
+        <th class="border border-slate-300 py-3">Email</th>
+        <th class="border border-slate-300 py-3">Phone</th>
+        <th class="border border-slate-300 py-3">Tools</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item  of data" class="group/item hover:bg-blue-100">
+        <td class="border border-slate-300">{{item.name}}</td>
+        <td class="border border-slate-300">{{item.username}}</td>
+        <td class="border border-slate-300">{{item.email}}</td>
+        <td class="border border-slate-300">{{item.phone}}</td>
+        <td class="border border-slate-300">
+          <button class="bg-orange-500 duration-300 tex-white px-4 py-2 rounded-xl text-white hover:bg-orange-700">Detalles</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

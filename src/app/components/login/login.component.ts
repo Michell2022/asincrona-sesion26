@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DatosService } from 'src/app/services/datos.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
 
   formLogin!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+
+  constructor(private formBuilder: FormBuilder, private datitosService: DatosService, private router: Router) { }
 
   // VALIDANDO LOS CAMPOS CON UN MINIMO DE 3 CARÁCTERES.
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class LoginComponent implements OnInit {
           Validators.minLength(3)
         ]
       ],
-      password: ['',
+      email: ['',
         [
           Validators.required,
           Validators.minLength(3)
@@ -33,8 +35,8 @@ export class LoginComponent implements OnInit {
   get username() {
     return this.formLogin.get('username')!;
   }
-  get password() {
-    return this.formLogin.get('password')!;
+  get email() {
+    return this.formLogin.get('email')!;
   }
 
   public validate(): void {
@@ -44,11 +46,28 @@ export class LoginComponent implements OnInit {
       }
       return;
     }
-  }
-
-
-
-  validar() {
 
   }
+
+
+
+  async validarEntradas() {
+
+    const user = this.formLogin.get('username')?.value;
+    const email = this.formLogin.get('email')?.value;
+
+    //this.datitosService.compareData(user,email);
+    this.datitosService.compareData(user,email).subscribe(isValid => {
+      if (isValid) {
+        this.router.navigate(['home']);
+        console.log("Datos correctos");
+      } else {
+        console.log("Incorrectos");
+      }
+    });
+
+  }
+
 }
+
+
